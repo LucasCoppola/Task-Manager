@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- favicon -->
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+		<!-- font awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+		<!-- normalize css -->
+		<link rel="stylesheet" href="/stylesheets/normalize.css" />
+		<!-- main css -->
+		<link rel="stylesheet" href="/stylesheets/main.css" />
+		<title>Task Manager</title>
+	</head>
+	<body>
+		<form class="task-form" method="post">
+			<h4>task manager</h4>
+			<div class="form-control">
+				<input type="text" name="name" class="task-input" placeholder="e.g. wash dishes" />
+				<button class="btn btn-success">submit</button>
+			</div>
+			<% if (success) { %>
+			<div class="text-success"><%= success %></div>
+			<% } %> <% if (error && error.length) { %>
+			<div class="text-danger"><%= error %></div>
+			<% } %>
+		</form>
+		<section class="tasks-container">
+			<% if(tasks.length) {%> <% for(let task of tasks){ %>
+			<div class="single-task">
+				<h5>
+					<span><i class="far fa-check-circle"></i></span>
+					<%= task.name %>
+				</h5>
+				<div class="task-links">
+					<!-- edit link -->
+					<a href="<%= task._id %>" class="edit-link">
+						<i class="fas fa-edit"></i>
+					</a>
+					<!-- delete btn -->
+					<form action="/<%= task._id %>?_method=DELETE" method="post">
+						<button type="submit" class="delete-btn" data-id="<%= task._id %>">
+							<i class="fas fa-trash"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<% } %> <% }else{ %>
+			<h5 class="empty-list">No tasks in your list</h5>
+			<% } %>
+		</section>
+		<!-- axios -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+			integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+	</body>
+</html>
