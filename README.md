@@ -1,3 +1,3 @@
 # Task-Manager
-## Basic Express App
+## Express App
 ### CSS PROVIDED BY "John Smilga"
