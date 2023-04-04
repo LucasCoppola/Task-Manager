@@ -14,7 +14,7 @@ const ExpressError = require('./AppErrors/ExpressError')
 const catchAsync = require('./AppErrors/catchAsync')
 const cors = require('cors')
 const flash = require('connect-flash')
-const session = require('express-session')
+const session = require('cookie-session')
 
 const dbUrl = process.env.DB_URL
 
